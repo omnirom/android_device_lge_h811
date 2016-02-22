@@ -19,6 +19,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/lge/h811/h811-vendor.mk)
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
@@ -27,6 +30,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
 
+# Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.do_not_init_csvt=1 \
+    rild.libargs=-d /dev/smd0 \
+    ril.subscription.types=NV,RUIM \
+    ro.telephony.call_ring.multiple=0 \
+    ro.telephony.default_network=9 \
+    telephony.lteOnCdmaDevice=0 \
+    telephony.lteOnGsmDevice=1
+
 # common g4
-$(call inherit-product, device/lge/g4-common/g4.mk)
+$(call inherit-product, device/lge/g4-common/common.mk)
 
