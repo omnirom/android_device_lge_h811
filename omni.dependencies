@@ -64,5 +64,17 @@
     "repository": "android_external_connectivity",
     "target_path": "external/connectivity",
     "revision": "android-6.0"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_sony_thermanager",
+    "target_path": "hardware/sony/thermanager",
+    "revision": "android-6.0"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_sony_timekeep",
+    "target_path": "hardwareony/timekeep",
+    "revision": "android-6.0"
   }
 ]
